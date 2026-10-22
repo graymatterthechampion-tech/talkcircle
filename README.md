@@ -2,7 +2,7 @@
 
 A full-stack social media platform with real-time messaging, built with the MERN stack and TypeScript.
 
-> **Status:** Draft — awaiting instructor approval (GOMYCODE Lab Phase, due 24 October 2026)
+> **Status:** In active development — GOMYCODE Lab Phase project# TalkCircle Server
 
 ## About
 
@@ -32,6 +32,19 @@ Stories, highlights and status updates · reposts, bookmarks and share links · 
 | Media | Cloudinary |
 | Testing | Postman / Newman |
 | Deployment | Vercel (client), Render (server), MongoDB Atlas |
+
+## Progress
+
+- [x] Project spec and architecture
+- [x] Server foundation: strict TypeScript, ESLint, environment validation, MongoDB connection
+- [ ] Error handling, rate limiting and health check
+- [ ] Authentication
+- [ ] Circles (fan communities)
+- [ ] Posts and media uploads
+- [ ] Likes and comments
+- [ ] Live circle chat
+- [ ] Test suites and deployment
+- [ ] Frontend and 3D landing page
 
 ## Development approach
 
