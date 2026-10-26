@@ -59,6 +59,34 @@
 ## Project structure
 
 
+## Running the server locally
+
+Requirements: Node.js 22+, a MongoDB Atlas cluster.
+
+```bash
+cd server
+npm install
+cp .env.example .env
+```
+
+Fill in `server/.env`:
+
+| Variable | Value |
+|---|---|
+| `MONGODB_URI` | Your Atlas connection string, with `circle` as the database name |
+| `JWT_SECRET` | At least 32 random characters: `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"` |
+
+Then:
+
+```bash
+npm run dev        # start with auto-restart
+npm test           # run the test suite
+npm run typecheck  # check types
+npm run lint       # check code quality
+```
+
+Check it's running: http://localhost:4001/api/health
+
 
 ## Development approach
 
