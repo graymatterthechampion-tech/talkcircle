@@ -36,4 +36,10 @@ describe("app", () => {
     expect(response.get("X-Content-Type-Options")).toBe("nosniff");
     expect(response.get("X-Powered-By")).toBeUndefined();
   });
+
+  it("describes the API at the root URL", async () =>{
+    const response = await request(app).get("/");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({name: "Talkcircle API", status: "running", health: "/api/health"});
+  });
 });
