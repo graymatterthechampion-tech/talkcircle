@@ -36,7 +36,7 @@ app.use("/api", noStore);
 app.get("/api/health", healthCheck);
 
 app.get("/", (_req, res) => {
-    res.status(200).json({name: "Talkcircle API", status: "running", health: "/api/health"});
+    res.status(200).json({name: "Circle API", status: "running", health: "/api/health"});
 });
 
 app.use("/api", apiLimiter);

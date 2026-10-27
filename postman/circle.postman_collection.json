@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "843e09d0-da15-4f7d-b2dc-0278007072e0",
-    "name": "Talkcircle API",
+    "name": "Circle API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "58440080",
     "_collection_link": "https://go.postman.co/collection/58440080-843e09d0-da15-4f7d-b2dc-0278007072e0?source=collection_link"
@@ -40,7 +40,7 @@
           "response": []
         },
         {
-          "name": "New Request",
+          "name": "Unknown route",
           "event": [
             {
               "listen": "test",
@@ -67,46 +67,46 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Malformed JSON",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "   pm.test(\"status is 400\", () => {\n     pm.response.to.have.status(400);\n   });\n\n   pm.test(\"error code is INVALID_JSON\", () => {\n     const body = pm.response.json();\n     pm.expect(body.error.code).to.eql(\"INVALID_JSON\");\n   });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "   {\"text\":",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/anything",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "anything"
+              ]
+            }
+          },
+          "response": []
         }
       ]
-    },
-    {
-      "name": "New Request",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "   pm.test(\"status is 400\", () => {\n     pm.response.to.have.status(400);\n   });\n\n   pm.test(\"error code is INVALID_JSON\", () => {\n     const body = pm.response.json();\n     pm.expect(body.error.code).to.eql(\"INVALID_JSON\");\n   });"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "   {\"text\":",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{baseUrl}}/api/anything",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "api",
-            "anything"
-          ]
-        }
-      },
-      "response": []
     }
   ]
 }

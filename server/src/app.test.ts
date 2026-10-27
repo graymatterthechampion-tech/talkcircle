@@ -40,6 +40,6 @@ describe("app", () => {
   it("describes the API at the root URL", async () =>{
     const response = await request(app).get("/");
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({name: "Talkcircle API", status: "running", health: "/api/health"});
+    expect(response.body).toEqual({name: "Circle API", status: "running", health: "/api/health"});
   });
 });
