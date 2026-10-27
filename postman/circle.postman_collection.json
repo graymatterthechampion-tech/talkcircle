@@ -1,0 +1,112 @@
+{
+  "info": {
+    "_postman_id": "843e09d0-da15-4f7d-b2dc-0278007072e0",
+    "name": "Talkcircle API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58440080",
+    "_collection_link": "https://go.postman.co/collection/58440080-843e09d0-da15-4f7d-b2dc-0278007072e0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "health check",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status is 200\", () => {\n  pm.response.to.have.status(200);\n});\n\npm.test(\"database is connected\", () => {\n  const body = pm.response.json();\n  pm.expect(body.status).to.eql(\"ok\");\n  pm.expect(body.db).to.eql(\"connected\");\n  pm.expect(body.uptime).to.be.a(\"number\");\n});\n\npm.test(\"response is not cacheable\", () => {\n  pm.response.to.have.header(\"Cache-Control\", \"no-store\");\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "   pm.test(\"status is 404\", () => {\n     pm.response.to.have.status(404);\n   });\n\n   pm.test(\"error has the standard shape\", () => {\n     const body = pm.response.json();\n     pm.expect(body.error.code).to.eql(\"NOT_FOUND\");\n     pm.expect(body.error.message).to.be.a(\"string\");\n   });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/does-not-exist",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "does-not-exist"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "New Request",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "   pm.test(\"status is 400\", () => {\n     pm.response.to.have.status(400);\n   });\n\n   pm.test(\"error code is INVALID_JSON\", () => {\n     const body = pm.response.json();\n     pm.expect(body.error.code).to.eql(\"INVALID_JSON\");\n   });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "   {\"text\":",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/anything",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "anything"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

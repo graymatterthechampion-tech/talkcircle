@@ -14,7 +14,7 @@
         "lint": "eslint .",
         "seed": "tsx src/scripts/seed.ts",
         "start": "node --enable-source-maps dist/server.js",
-        "test:api": "newman run ../postman/talkcircle.postman_collection.json -e ../postman/local.postman_environment.json",
+        "test:api": "newman run ../postman/circle.postman_collection.json --env-var baseUrl=http://localhost:4001",
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
