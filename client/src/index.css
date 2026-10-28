@@ -1,4 +1,40 @@
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #ffffff;
+  --color-surface: #f3f3f6;
+  --color-ink: #0e0e12;
+  --color-ink-muted: #5f6170;
+  --color-line: #ececf1;
+  --color-accent: #6d4aff;
+  --color-on-accent: #ffffff;
+  --color-live: #ff4d6d;
+  --color-ring-seen: #d3d4db;
+  --color-tint-violet: #eae6ff;
+  --color-tint-pink: #ffe3e9;
+  --color-tint-teal: #e0f4f1;
+  --color-tint-amber: #fff1d6;
+
+  --font-logo: system-ui, sans-serif;
+  --font-display: system-ui, sans-serif;
+  --font-body: system-ui, sans-serif;
+
+  --radius-tile: 14px;
+  --radius-control: 20px;
+  --radius-card: 24px;
+  --radius-feed: 28px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
 }
