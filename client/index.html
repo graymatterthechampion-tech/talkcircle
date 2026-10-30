@@ -5,7 +5,31 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="desciption" content="Circle - where fans talk about movies, books and football." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Circle</title>
+  <script>
+    (function () {
+      var prefrence = "system";
+      try {
+        var stored = window.localStorage.getItem("circle-theme");
+        if (stored === "light" || stored === "dark" || stored === "system" ) {
+          prefrence = stored;
+        }
+      } catch (error) {
+        prefrence = "system";
+      }
+      var systemIsDark = 
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var isDark = prefrence === "dark" || (prefrence === "system" && systemIsDark);
+      document.documentElement.dataset.theme =isDark ? "dark" : "light";
+      var browserBar = document.querySelector('meta[name="theme-color"]');
+      if (browserBar !== null) {
+        browserBar.setAttribute("content", isDark ? "#0f1013" : "#ffffff");
+      }
+    })();
+  </script>
 </head>
 <body>
   <div id="root"></div>

@@ -3,12 +3,14 @@
 @theme {
   --color-canvas: #ffffff;
   --color-surface: #f3f3f6;
+  --color-raised: #ffffff;
   --color-ink: #0e0e12;
   --color-ink-muted: #5f6170;
   --color-icon-muted: #8a8c99;
   --color-line: #ececf1;
   --color-accent: #1f2024;
   --color-on-accent: #ffffff;
+  --color-danger: #c4213e;
   --color-live: #ff4d6d;
   --color-ring-seen: #d3d4db;
   --color-tint-violet: #eae6ff;
@@ -24,6 +26,29 @@
   --radius-control: 20px;
   --radius-card: 24px;
   --radius-feed: 28px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-canvas: #0f1013;
+  --color-surface: #1a1b20;
+  --color-raised: #24262c;
+  --color-ink: #f2f2f4;
+  --color-ink-muted: #a3a6b2;
+  --color-icon-muted: #6e7180;
+  --color-line: #2a2c33;
+  --color-accent: #f2f2f4;
+  --color-on-accent: #0f1013;
+  --color-danger: #ff8fa3;
+  --color-ring-seen: #4a4c55;
+  --color-tint-violet: #2a2540;
+  --color-tint-pink: #3a2430;
+  --color-tint-teal: #1c3431;
+  --color-tint-amber: #3a3020;
 }
 
 @layer base {
